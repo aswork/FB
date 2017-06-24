@@ -9,7 +9,9 @@
 <div class="row">
   <p><%= profile_img(topic.user) %> </p>
   <p><%= topic.user.name %></p>
+  <%= link_to topic_path(topic) do %>
   <h4><strong><%= topic.title %></strong></h4>
+  <% end %>
   <p><%= topic.content %></p>
   <%= link_to "編集する", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
   <%= link_to '削除する', topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>

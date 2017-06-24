@@ -14,6 +14,10 @@ devise_for :users, controllers: {
   registrations: "users/registrations",
   omniauth_callbacks: "users/omniauth_callbacks"
 }
+resources :topics do
+  resources :comments
+  post :confirm, on: :collection
+end
 
 root 'top#index'
 
