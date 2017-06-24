@@ -7,6 +7,7 @@
 <%= link_to "Topicを作成する", new_topic_path, class: 'btn btn-default' %>
 <% @topics.each do |topic| %>
 <div class="row">
+  <p><%= profile_img(topic.user) %> </p>
   <p><%= topic.user.name %></p>
   <h4><strong><%= topic.title %></strong></h4>
   <p><%= topic.content %></p>
