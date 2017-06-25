@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
   def show
     @comment = @topic.comments.build
     @comments = @topic.comments
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def new
@@ -35,6 +36,9 @@ class TopicsController < ApplicationController
   def update
     @topic.update(topics_params)
     redirect_to topics_path, notice: "Topicを編集しました！"
+  else
+    render 'edit'
+  end
   end
 
   def destroy
@@ -50,11 +54,9 @@ class TopicsController < ApplicationController
 
   private
     def topics_params
-      params.require(:topic).permit(:title, :content)
+      params.require(:topic).permit(:title, :content, :update)
     end
 
     def set_topic
       @topic = Topic.find(params[:id])
     end
-
-end
