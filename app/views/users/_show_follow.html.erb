@@ -1,0 +1,10 @@
+<% @user.followed_users.each do |user| %>
+<table>
+<tr>
+  <td><%= profile_img(user) %></td>
+  <td>  <%= user.name %> </td>
+  <td><%= link_to '詳細', user_path(user) %></td>
+</tr>
+
+</table>
+<% end %>

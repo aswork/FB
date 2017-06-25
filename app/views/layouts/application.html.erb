@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FB3</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <% if user_signed_in? %>
+  <script>
+    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+      cluster: 'ap1',
+      encrypted: true
+    });
 
+    var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+    channel.bind('comment_created', function(data) {
+      alert(data.message);
+    });
+  </script>
+  <% end %>
 </head>
 <body>
 
@@ -29,6 +42,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "トップページ", root_path %></li>
               <li><%= link_to "Topic", topics_path %></li>
+              <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+              <li><%= link_to "メッセージ", conversations_path %></li>
        <% if user_signed_in? %>
          <li><%= link_to 'マイページ', edit_user_registration_path %></li>
          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

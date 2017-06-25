@@ -1,0 +1,21 @@
+<h3>ユーザー詳細</h3><br><br>
+<% @user ||= current_user %>
+<p><%= profile_img(@user) %></p>
+<p>name：<%= @user.name %></p>
+<p>email：<%= @user.email %></p>
+
+
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+
+    </strong>
+    フォロー
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+
+    </strong>
+    フォロワー
+  </a>
+</div>
