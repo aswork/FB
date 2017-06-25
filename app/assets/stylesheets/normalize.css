@@ -445,3 +445,8 @@ template {
 [hidden] {
   display: none;
 }
+
+
+img{
+  max-width: 60px;
+}

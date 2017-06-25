@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
-
-  get 'notifications/index'
+get 'notifications/index'
 
 resources :topics do
 collection do
@@ -9,7 +7,9 @@ collection do
   end
 end
 
-
+if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+end
 
 devise_for :users, controllers: {
   registrations: "users/registrations",
@@ -34,9 +34,6 @@ resources :conversations do
   resources :messages
 end
 
-if Rails.env.development?
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
-end
 
 root 'top#index'
 

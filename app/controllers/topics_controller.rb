@@ -39,7 +39,7 @@ class TopicsController < ApplicationController
   else
     render 'edit'
   end
-  end
+
 
   def destroy
     @topic.destroy
@@ -60,3 +60,4 @@ class TopicsController < ApplicationController
     def set_topic
       @topic = Topic.find(params[:id])
     end
+end
