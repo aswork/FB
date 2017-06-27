@@ -21,8 +21,16 @@ class CommentsController < ApplicationController
     end
   end
 
-  
+  def edit
+    @topic=Topic.find(params[:topic_id])
+    @comment=Comment.find(params[:id])
+  end
 
+  def update
+    @comment=Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to topic_path(@comment.topic), notice: "コメントを編集しました！"
+    end
 
 
   def destroy
