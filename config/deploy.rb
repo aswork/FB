@@ -1,7 +1,7 @@
 lock '3.6.0'
 
 # デプロイするアプリケーション名
-set :application, 'FB'
+set :application, 'FB3'
 
 # cloneするgitのレポジトリ（xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
 set :repo_url, 'https://github.com/aswork/FB.git'
