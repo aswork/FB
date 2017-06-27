@@ -26,7 +26,7 @@
 
 10.times do |i|
    @topic = Topic.create(title: "テスト",content: "テスト",user_id: 1+i)
-10.times do
+1.times do
    @topic.comments.build(content: 'テスト',user_id: 1+i)
    end
   @topic.save
