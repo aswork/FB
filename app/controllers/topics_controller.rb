@@ -36,8 +36,6 @@ class TopicsController < ApplicationController
   def update
     @topic.update(topics_params)
     redirect_to topics_path, notice: "Topicを編集しました！"
-  else
-    render 'edit'
   end
 
 
