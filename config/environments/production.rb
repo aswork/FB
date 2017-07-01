@@ -19,7 +19,7 @@ Rails.application.configure do
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
-config.action_mailer.default_url_options = { host: '52.68.63.213' }
+config.action_mailer.default_url_options = { host: 'thawing-bastion-48857.herokuapp.com' }
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings =
 {
